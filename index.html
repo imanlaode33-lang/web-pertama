@@ -1,103 +1,378 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RESTORAN LIDA KULINER</title>
-    <style>
-    body {
-      margin: 0;
-      font-family: 'Times New Roman', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .navbar {
-      background-color: #1e293b;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 20px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
-    }
-    .navbar a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 8px 16px;
-      border-radius: 6px;
-      transition: all 0.3s ease; 
-    }
+    <title>Restoran Lida Kuliner</title>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    
-    .navbar a:hover {
-      background-color: #3b82f6; 
-      color: #ffffff;
-      transform: translateY(-2px); 
-    }
+    <style>
+        /* --- Reset & Gaya Dasar --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4fdf9;
+            color: #1e293b;
+            line-height: 1.8;
+        }
+
+        /* --- Navbar Modern --- */
+        .navbar {
+            background-color: #1e293b;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar .brand {
+            color: #38bdf8;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #3b82f6;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* --- Container Utama --- */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* --- Hero Section (Header) --- */
+        .hero-section {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero-section h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 16px;
+            color: #cbd5e1;
+            max-width: 750px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero-img-container {
+            margin-top: 20px;
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* --- Story Section --- */
+        .story-section {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .story-section p {
+            font-size: 16px;
+            color: #475569;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* --- Menu Favorit Grid --- */
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .menu-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .menu-info h3 {
+            font-size: 18px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .menu-info p {
+            font-size: 14px;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* --- Testimonial Section --- */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #3b82f6;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-card p.quote {
+            font-size: 15px;
+            color: #334155;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card p.author {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+            text-align: right;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-section h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            line-height: 1.8;
+            color: #f0f9ff;
+        }
+
+        .btn-order {
+            display: inline-block;
+            background-color: #10b981;
+            color: white;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-order:hover {
+            background-color: #059669;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #64748b;
+        }
     </style>
 </head>
-<body style="background-color: rgba(161, 244, 216, 0.548);">
-<nav class="navbar">
-    <p align = "right">
-        <a href="index.html">Beranda</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="menu.html">Menu Restoran</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="Tentang_kami.html">Tentang Kami</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
-</p>
-</nav>
-<h1 style="font-size: 180%; font-style: Times New Roman;color: black;"align="center">Selamat datang di Lida Kuliner</h1>
-<p align="center" style="font-style: Times New Roman; font-size: 15px; margin-left: 60px;margin-right: 60px;">Destinasi kuliner terbaik untuk Anda yang merindukan cita rasa masakan otentik, kaya rempah, dan diolah dengan penuh cinta. Nikmati kelezatan di setiap suapannya</p>
-<p align="center">
-<img src="WhatsApp Image 2026-11-03 at 21.42.49.jpeg" alt="Foto Restoran Lida Kuliner" width="300" height="250">
-</p>
-<p align="center" style=" margin-top: 30px; margin-bottom: 70px ;margin-left: 60px;margin-right: 60px; font-size: 17px;">
-   "Berawal dari kecintaan terhadap keanekaragaman kuliner nusantara, Lida Kuliner hadir untuk menyajikan hidangan berkualitas tinggi bagi Anda dan keluarga. Kami percaya bahwa makanan yang enak tidak hanya mengenyangkan perut, tetapi juga menghangatkan hati dan menciptakan momen kebersamaan yang berharga.
 
-Setiap bahan yang kami gunakan dipilih secara ketat dari petani dan pemasok lokal pilihan untuk memastikan kesegaran, kebersihan, dan kualitas rasa terbaik di setiap piring yang tersaji di meja Anda."
-</p>
-<hr>
-<h2 style="height: 40px;font-size: 45px; margin-left: 30px;">Menu Favorit</h2>
-<p style="font-size: 20px; margin-left: 30px;">Menu Paling Dicari
-Rekomendasi hidangan spesial chef kami yang paling disukai oleh para pelanggan setia.</p>
-<table border="0" width="100%" cellpadding="20">
-    <tr>
-        <td width="40%" align="center" valign="top">
-            <img src="BeFunky_PA121846.jpg (Medium).jpg" alt="AYAM BAKAR MADU" width="400">
-        </td>
-        <td width="70%" valign="top">
-            <h2 style="font-style: italic;margin: 20px; margin-bottom: 30px;">Daging ayam pilihan yang empuk, dibalut bumbu rempah meresap dan olesan madu murni, dibakar sempurna dengan aroma smoky yang menggoda.</h2>
-        </td>
-    </tr>
-</table>
-<table border="0" width="100%" cellpadding="20">
-    <tr>
-        <td width="40%" align="center" valign="top">
-            <img src="sop-gurame-asam-pedas-foto-resep-utama.jpg" alt="sop gurame asam pedas" width="400">
-        </td>
-        <td width="70%" valign="top">
-            <h2 style="font-style: italic;margin: 20px; margin-bottom: 30px;">Ikan gurame segar dengan kuah kaldu kuning yang kaya rempah, berpadu rasa asam dan pedas yang menyegarkan tenggorokan.</h2>
-        </td>
-    </tr>
-</table>
-<table border="0" width="100%" cellpadding="20">
-    <tr>
-        <td width="40%" align="center" valign="top">
-            <img src="nasi goreng spesial.jpg" alt="Nasi Goreng Spesial" width="400">
-        </td>
-        <td width="70%" valign="top">
-            <h2 style="font-style: italic;margin: 20px; margin-bottom: 300px;">Nasi goreng bumbu rahasia khas Lida Kuliner, dilengkapi suwiran ayam, telur, dan sayur sayuran di atasnya.</h2>
-    </tr>
-</table>
-<hr>
-<h1 style="font-size: 30px;margin-bottom: 60px;"  align="center">Kata Mereka yang Sudah Mencoba</h1>
-<p align="left" style="margin-top: 0; font-size: 22px;margin-left: 90px;margin-right: 90px;">"Tempatnya nyaman banget buat makan bareng keluarga. 
-    Rasanya benar-benar otentik, bumbunya berasa banget di lidah, dan pelayanannya ramah. Pasti bakal balik lagi!"
-    </p>
-    <p align="left" style="margin-top: 50px; font-size: 25px;margin-bottom: 90px; margin-left: 90px;"> — Ibu Siska, Pelanggan Setia</p>
-    <p align="left" style="margin-top: 0; font-size: 22px; margin-left: 90px;margin-right: 90px;">"Ayam bakar madunya juara! Empuk dan manis gurihnya pas. Sangat direkomendasikan buat pecinta kuliner lokal."</p>
-    <p align="left" style="margin-top: 50px; font-size: 25px;margin-bottom: 150px; margin-left: 90PX;">— Bapak Reza, Food Blogger</p>
-<hr>
+<body>
 
-    <h1 style="font-size: 35px;margin-bottom: 45px; margin-left: 70PX; margin-right: 70PX;"  align="center">Lapar dan Siap Menikmati Kelezatan?</h1>
-    <p align="center" style="margin-top: 0; font-size: 30px; margin-right: 78Px;margin-left: 78px;">Jangan tunda selera makan Anda. Kunjungi restoran kami hari ini di jalan dayanu ikhsanudin Buka dari JAM 08:00-23:00 WITA atau pesan secara online untuk dinikmati di rumah bersama orang tersayang.</p>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="brand">Lida Kuliner</a>
+        <div class="navbar-links">
+            <a href="index.html">Beranda</a>
+            <a href="menu.html">Menu Restoran</a>
+            <a href="Tentang_kami.html">Tentang Kami</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1>Selamat Datang di Lida Kuliner</h1>
+            <p>Destinasi kuliner terbaik untuk Anda yang merindukan cita rasa masakan otentik, kaya rempah, dan diolah dengan penuh cinta. Nikmati kelezatan di setiap suapannya!</p>
+            
+            <div class="hero-img-container">
+                <img src="WhatsApp Image 2026-11-03 at 21.42.49.jpeg" alt="Foto Restoran Lida Kuliner">
+            </div>
+        </section>
+
+        <!-- Story / About Snippet Section -->
+        <section class="story-section">
+            <p>
+                "Berawal dari kecintaan terhadap keanekaragaman kuliner nusantara, <strong>Lida Kuliner</strong> hadir untuk menyajikan hidangan berkualitas tinggi bagi Anda dan keluarga. Kami percaya bahwa makanan yang enak tidak hanya mengenyangkan perut, tetapi juga menghangatkan hati dan menciptakan momen kebersamaan yang berharga.<br><br>
+                Setiap bahan yang kami gunakan dipilih secara ketat dari petani dan pemasok lokal pilihan untuk memastikan kesegaran, kebersihan, dan kualitas rasa terbaik di setiap piring yang tersaji di meja Anda."
+            </p>
+        </section>
+
+        <!-- Menu Favorit Section -->
+        <div style="margin-bottom: 20px;">
+            <h2 class="section-title">⭐ Menu Favorit</h2>
+            <p class="section-subtitle">Rekomendasi hidangan spesial chef kami yang paling disukai oleh para pelanggan setia.</p>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Item 1 -->
+            <div class="menu-card">
+                <img src="BeFunky_PA121846.jpg (Medium).jpg" alt="Ayam Bakar Madu">
+                <div class="menu-info">
+                    <h3>Ayam Bakar Madu Rempah</h3>
+                    <p>"Daging ayam pilihan yang empuk, dibalut bumbu rempah meresap dan olesan madu murni, dibakar sempurna dengan aroma smoky yang menggoda."</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="menu-card">
+                <img src="sop-gurame-asam-pedas-foto-resep-utama.jpg" alt="Sop Gurame Asam Pedas">
+                <div class="menu-info">
+                    <h3>Sop Gurame Asam Pedas</h3>
+                    <p>"Ikan gurame segar dengan kuah kaldu kuning yang kaya rempah, berpadu rasa asam dan pedas yang menyegarkan tenggorokan."</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="menu-card">
+                <img src="nasi goreng spesial.jpg" alt="Nasi Goreng Spesial">
+                <div class="menu-info">
+                    <h3>Nasi Goreng Spesial Lida</h3>
+                    <p>"Nasi goreng bumbu rahasia khas Lida Kuliner, dilengkapi suwiran ayam, telur, dan sayur-sayuran di atasnya."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kata Mereka (Testimonials) Section -->
+        <div style="margin-bottom: 20px;">
+            <h2 class="section-title">💬 Kata Mereka yang Sudah Mencoba</h2>
+            <p class="section-subtitle">Apa kata pengunjung setia tentang pengalaman bersantap di Lida Kuliner.</p>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="quote">"Tempatnya nyaman banget buat makan bareng keluarga. Rasanya benar-benar otentik, bumbunya berasa banget di lidah, dan pelayanannya ramah. Pasti bakal balik lagi!"</p>
+                <p class="author">— Ibu Siska, Pelanggan Setia</p>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"Ayam bakar madunya juara! Empuk dan manis gurihnya pas. Sangat direkomendasikan buat pecinta kuliner lokal."</p>
+                <p class="author">— Bapak Reza, Food Blogger</p>
+            </div>
+        </div>
+
+        <!-- Call to Action (CTA) Section -->
+        <section class="cta-section">
+            <h2>Lapar dan Siap Menikmati Kelezatan?</h2>
+            <p>
+                Jangan tunda selera makan Anda. Kunjungi restoran kami hari ini di <strong>Jl. Dayanu Ikhsanudin</strong>. 
+                Buka setiap hari dari pukul <strong>08:00 - 23:00 WITA</strong>, atau pesan secara online untuk dinikmati di rumah bersama orang tersayang.
+            </p>
+            <a href="https://wa.me/6281247462712" target="_blank" class="btn-order">📲 Pesan Online via WhatsApp</a>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Restoran Lida Kuliner. Seluruh Hak Cipta Dilindungi.</p>
+    </footer>
 
 </body>
 </html>
