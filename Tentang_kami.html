@@ -73,8 +73,8 @@
             padding: 0 20px;
         }
 
-        /* --- Kartu Profil / Konten Tentang Kami --- */
-        .about-card {
+        /* --- Kartu Profil / Konten --- */
+        .about-card, .contact-card {
             background-color: #ffffff;
             padding: 40px;
             border-radius: 16px;
@@ -82,8 +82,8 @@
             margin-bottom: 40px;
         }
 
-        .about-card h1 {
-            font-size: 32px;
+        .about-card h1, .contact-card h2 {
+            font-size: 28px;
             color: #0f172a;
             margin-bottom: 25px;
             text-align: center;
@@ -92,7 +92,7 @@
             padding-bottom: 15px;
         }
 
-        .about-card h1::after {
+        .about-card h1::after, .contact-card h2::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -115,6 +115,60 @@
             color: #1e293b;
         }
 
+        /* --- Formulir Pesan / Kontak --- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            color: #1e293b;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-submit:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
         /* --- Bagian Media Sosial --- */
         .social-section {
             text-align: center;
@@ -123,6 +177,7 @@
             padding: 40px 20px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
         }
 
         .social-section h2 {
@@ -188,6 +243,7 @@
     <!-- Konten Utama -->
     <div class="container">
         
+        <!-- Bagian Tentang Kami -->
         <div class="about-card">
             <h1>Tentang Lida Kuliner</h1>
             
@@ -203,6 +259,29 @@
             <p class="about-text" style="margin-bottom: 0;">
                 Apakah Anda datang untuk merayakan momen spesial bersama keluarga, makan siang santai bersama rekan kerja, atau sekadar menikmati malam yang hangat, <strong>Restoran Lida Kuliner</strong> siap menyambut Anda dengan hidangan istimewa dan pelayanan penuh kehangatan.
             </p>
+        </div>
+
+        <!-- Bagian Formulir Kirim Pesan -->
+        <div class="contact-card">
+            <h2>Kirim Pesan atau Ulasan Anda</h2>
+            <form action="https://formspree.io/f/mrppdapy" method="POST">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama Anda..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email atau Nomor WhatsApp</label>
+                    <input type="text" id="email" name="email_or_phone" placeholder="Contoh: andi@gmail.com / 08123456789" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Pesan / Kesan / Ulasan</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tuliskan pesan, kritik, saran, atau ulasan Anda di sini..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">🚀 Kirim Pesan</button>
+            </form>
         </div>
 
         <!-- Section Media Sosial -->
